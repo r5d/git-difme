@@ -1,0 +1,38 @@
+* git difme
+
+stages files and makes commits on a list of git repositories based on
+some rules.
+
+** rules
+
+the rules specify what type of files to stage.
+
+file types:
+
+   - untracked file (??).
+   - modified file (M).
+   - deleted file (D).
+   - renamed file (R).
+   - copied file (C).
+
+the rules are defined per git repository in the config file.
+
+** config
+
+the config file must be at =~/.config/git-difme/config=.
+
+the config is simply a scheme file that defiens =difm-repos=:
+
+#+BEGIN_SRC scheme
+(define difm-repos (list
+                     (cons '/path/to/git/repo/foo '(M D))
+                     (cons '/path/to/git/repo/bar '(R M))
+                     (cons '/path/to/git/repo/baz '(C M ??))))
+#+END_SRC
+
+- for repo ~foo~, git difm will only stage modified (M) and
+  deleted (D) files.
+- for repo ~bar~, git difm will only stage renamed (R) and modified
+  (M) files.
+- for repo ~baz~, git difm will only stage copied (C), modified (M)
+  and untracked files.
