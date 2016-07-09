@@ -1,5 +1,9 @@
 * git difme
 
+#+BEGIN_SRC bash
+git clone git://git.ricketyspace.net/git-difme.git
+#+END_SRC
+
 stages files and makes commits on a list of git repositories based on
 some rules.
 
