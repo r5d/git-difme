@@ -5,34 +5,42 @@ some rules.
 
 ** rules
 
-the rules specify what type of files to stage.
+the rules specify what type of files to stage and commit.
 
 file types:
 
-   - untracked file (??).
    - modified file (M).
    - deleted file (D).
-   - renamed file (R).
-   - copied file (C).
+   - untracked file (?).
 
 the rules are defined per git repository in the config file.
+
+if git-difme finds finds already staged files, it'll commit them first
+before doing anything.
 
 ** config
 
 the config file must be at =~/.config/git-difme/config=.
 
-the config is simply a scheme file that defiens =difm-repos=:
+the config is simply a scheme file that defines =difme-repos=
+function:
 
 #+BEGIN_SRC scheme
-(define difm-repos (list
-                     (cons '/path/to/git/repo/foo '(M D))
-                     (cons '/path/to/git/repo/bar '(R M))
-                     (cons '/path/to/git/repo/baz '(C M ??))))
+(define (difme-repos)
+  (list '("/path/to/git/repo/foo" "M" "D" "?")
+        '("/path/to/git/repo/bar" "M")
+        '("/path/to/git/repo/baz" "M" "?")
+        '("/path/to/git/repo/frb")))
 #+END_SRC
 
-- for repo ~foo~, git difm will only stage modified (M) and
-  deleted (D) files.
-- for repo ~bar~, git difm will only stage renamed (R) and modified
-  (M) files.
-- for repo ~baz~, git difm will only stage copied (C), modified (M)
-  and untracked files.
+- for repo ~foo~, git difm will only stage and commit modified (M),
+  deleted (D) and untracked (?) files.
+- for repo ~bar~, git difm will only stage and commit modified (M)
+  files.
+- for repo ~baz~, git difm will only stage and commit modified (M) and
+  untracked (?) files.
+- for repo ~frb~, git difm will only stage and commit all types of
+  files.
+
+#+END_SRC
+
