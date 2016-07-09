@@ -76,6 +76,14 @@ path=(~/.bin $path)
 
 to =.zshenv=.
 
+*** the config file
+
+#+BEGIN_SRC bash
+make config
+#+END_SRC
+
+that will install a sample config file at =~/.config/git-difme=.
+
 ** license
 
 gnu general public license version 3 or higher.

@@ -1,0 +1,8 @@
+;; -*- mode: scheme; -*-
+;; public domain. no rights reserved.
+
+(define (difme-repos)
+  (list '("/path/to/git/repo/foo" "M" "D" "?")
+        '("/path/to/git/repo/bar" "M")
+        '("/path/to/git/repo/baz" "M" "?")
+        '("/path/to/git/repo/frb")))
