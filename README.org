@@ -44,3 +44,6 @@ function:
 
 #+END_SRC
 
+** license
+
+gnu general public license version 3 or higher.
