@@ -46,7 +46,35 @@ function:
 - for repo ~frb~, git difm will only stage and commit all types of
   files.
 
+** installing
+
+*** the script
+
+#+BEGIN_SRC bash
+make git-difme
 #+END_SRC
+
+that will install the =git-difme= script at =~/.bin/git-difme=.
+
+add =~/.bin/= to =PATH=.
+
+On bash, add this:
+
+#+BEGIN_SRC bash
+PATH=~/.bin:$PATH
+export PATH
+#+END_SRC
+
+to =.bashrc=:
+
+On zsh, add this:
+
+#+BEGIN_SRC zsh
+typeset -U path
+path=(~/.bin $path)
+#+END_SRC
+
+to =.zshenv=.
 
 ** license
 
