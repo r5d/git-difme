@@ -52,7 +52,10 @@ loads the configuration file and then evals the `difme-repos`
 function."
   (let ((path (get-config-path)))
     (load-config path)
-    (eval '(difme-repos) (interaction-environment))))
+    (map (lambda (repo-info)
+           ;; trim each string repo-info.
+           (map string-trim-both repo-info))
+         (eval '(difme-repos) (interaction-environment)))))
 
 ;;;; git interfaces
 (define (staged-files repo)
