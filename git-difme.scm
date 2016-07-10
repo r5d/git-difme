@@ -117,6 +117,27 @@ the commit message will be in the following format:
     (with-directory-excursion repo
       (difme-exec cmd))))
 
+;;;; difme workers
+(define (build-stage-regex rules)
+  "build stage regex based on RULES."
+  (let ((regex "^"))
+    (cond ((null? rules) (string-append regex "."))
+          (else (string-append
+                 regex "[" (string-concatenate rules) "]")))))
+
+(define (difme repo)
+  "stage and commit relevant files in REPO.
+
+also does `git push` to the REPO' default upstream remote."
+  (let* ((path (car repo))
+         (rules (cdr repo))
+         (stage-regex (build-stage-regex rules)))
+    stage-regex))
+
+(define (walk-difme repos)
+  "walk through each difme repo in REPOS and `difme` it."
+  (map difme repos))
+
 ;;;; main
 (define (main srcs)
   "zarking main."
