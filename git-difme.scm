@@ -53,6 +53,70 @@ function."
     (load-config path)
     (eval '(difme-repos) (interaction-environment))))
 
+;;;; git interfaces
+(define (staged-files repo)
+  "return list of staged files in REPO."
+  (let ((cmd "git diff --name-only --cached"))
+    (with-directory-excursion repo
+      (difme-exec cmd))))
+
+(define (difme-status repo)
+  "do `git status` on the REPO and return output as a list.
+
+if the output from `git status` is:
+
+ M .asoundrc
+ D .config/i3/config
+
+the returned list will be in the following format:
+
+     ((\"M\" . \".asoundrc\") (\"D\" . \".config/i3/config\"))
+
+if there is no output from `git status`, then an empty list will be
+returned."
+  (let ((cmd "git status --porcelain"))
+    (define (process line)
+      (let* ((parts (string-split line #\space))
+             (type (car parts))
+             (file (cadr parts)))
+        (cons type file)))
+    (with-directory-excursion repo
+      (map process (difme-exec cmd)))))
+
+(define (difme-stage repo file)
+"stage FILE in REPO."
+  (let ((cmd (string-append "git add " file)))
+    (with-directory-excursion repo
+      (difme-exec cmd))))
+
+(define (difme-commit repo msg)
+"do `git commit` on REPO.
+
+the commit message will be MSG followed by a list of files staged for
+this commit.
+
+if files `foo.org`, `bar.scm` and `frob.el` are staged for the commit,
+the commit message will be in the following format:
+
+    MSG
+
+    files:
+    - foo.org
+    - bar.scm
+    - frob.el"
+  (let* ((msg (string-append
+               msg "\n\nfiles:\n - "
+               (string-join (staged-files repo) "\n - ")))
+        (cmd (string-append "git commit -m '" msg "'")))
+    (with-directory-excursion repo
+      (difme-exec cmd))))
+
+(define (difme-push repo)
+  "do `git push` REPO to its default upstream remote."
+  (let ((cmd "git push"))
+    (with-directory-excursion repo
+      (difme-exec cmd))))
+
 ;;;; main
 (define (main srcs)
   srcs)
