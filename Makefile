@@ -3,7 +3,9 @@
 # copyright 2016 rsiddharth <s@ricketyspace.net>
 
 guile=$(shell which guile)
+
 bin=$(HOME)/.bin
+
 git_difme=$(bin)/git-difme
 git_difme_src=git-difme.scm
 
