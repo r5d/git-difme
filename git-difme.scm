@@ -30,6 +30,29 @@
     (close-pipe port)
     out-lst))
 
+;;;; configuration
+(define (load-config path)
+  "load configuration file from PATH.
+
+errors out if PATH does not exists."
+  (if (file-exists? path)
+      (load path)
+      (error "config not found at" path)))
+
+(define (get-config-path)
+  "return configuration file path as a string."
+  (string-append (getenv "HOME") "/.config/git-difme/config"))
+
+(define (get-difme-repos)
+  "return difme repos returned by `difme-repos` function.
+
+`difme-repos` is defined in the configuration file; this function
+loads the configuration file and then evals the `difme-repos`
+function."
+  (let ((path (get-config-path)))
+    (load-config path)
+    (eval '(difme-repos) (interaction-environment))))
+
 ;;;; main
 (define (main srcs)
   srcs)
