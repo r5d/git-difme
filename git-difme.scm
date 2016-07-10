@@ -101,12 +101,12 @@ the commit message will be in the following format:
 
     MSG
 
-    files:
+    file(s):
     - foo.org
     - bar.scm
     - frob.el"
   (let* ((msg (string-append
-               msg "\n\nfiles:\n - "
+               msg "\n\nfile(s):\n - "
                (string-join (staged-files repo) "\n - ")))
         (cmd (string-append "git commit -m '" msg "'")))
     (with-directory-excursion repo
