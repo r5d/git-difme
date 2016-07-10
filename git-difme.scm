@@ -119,4 +119,5 @@ the commit message will be in the following format:
 
 ;;;; main
 (define (main srcs)
+  "zarking main."
   srcs)
