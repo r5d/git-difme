@@ -11,6 +11,7 @@
 
 ;;; following macro from (guix build utils) module.
 ;;; copyright 2012 Ludovic Courtès <ludo@gnu.org>
+;;; repo git://git.sv.gnu.org/guix.git
 ;;; commit b0e0d0e99f
 
 (define-syntax-rule (with-directory-excursion dir body ...)
