@@ -130,7 +130,8 @@ the commit message will be in the following format:
 (define (build-stage-regex rules)
   "build stage regex based on RULES."
   (let ((regex "^"))
-    (cond ((null? rules) (string-append regex "."))
+    (cond ((null? rules) (string-append regex "$"))
+          ((member "." rules) ".")
           (else (string-append
                  regex "[" (string-concatenate rules) "]")))))
 

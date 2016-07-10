@@ -16,6 +16,7 @@ file types:
    - modified file (M).
    - deleted file (D).
    - untracked file (?).
+   - all files (.).
 
 the rules are defined per git repository in the config file.
 
@@ -34,7 +35,7 @@ function:
   (list '("/path/to/git/repo/foo" "M" "D" "?")
         '("/path/to/git/repo/bar" "M")
         '("/path/to/git/repo/baz" "M" "?")
-        '("/path/to/git/repo/frb")))
+        '("/path/to/git/repo/frb" ".")))
 #+END_SRC
 
 - for repo ~foo~, git difm will only stage and commit modified (M),
@@ -43,8 +44,7 @@ function:
   files.
 - for repo ~baz~, git difm will only stage and commit modified (M) and
   untracked (?) files.
-- for repo ~frb~, git difm will only stage and commit all types of
-  files.
+- for repo ~frb~, git difm will stage and commit all files.
 
 ** installing
 
