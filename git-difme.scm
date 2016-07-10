@@ -89,7 +89,7 @@ returned."
   (let ((cmd (string-append "git add " file)))
     (with-directory-excursion repo
       (difme-exec cmd))))
-
+
 (define (difme-commit repo msg)
 "do `git commit` on REPO.
 
@@ -111,6 +111,11 @@ the commit message will be in the following format:
         (cmd (string-append "git commit -m '" msg "'")))
     (with-directory-excursion repo
       (difme-exec cmd))))
+
+(define (difme-stage-commit repo file msg)
+  "stage and commit FILE in REPO with MSG as the commit message."
+  (difme-stage repo file)
+  (difme-commit repo msg))
 
 (define (difme-push repo)
   "do `git push` REPO to its default upstream remote."
