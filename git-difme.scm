@@ -135,14 +135,27 @@ the commit message will be in the following format:
           (else (string-append
                  regex "[" (string-concatenate rules) "]")))))
 
-(define (difme repo)
-  "stage and commit relevant files in REPO.
+(define (difme repo-info)
+  "stage and commit relevant files in repo defined REPO-INFO.
 
-also does `git push` to the REPO' default upstream remote."
-  (let* ((path (car repo))
-         (rules (cdr repo))
-         (stage-regex (build-stage-regex rules)))
-    stage-regex))
+also does `git push` to the repo' default upstream remote."
+  (let* ((repo-path (car repo-info))
+         (rules (cdr repo-info))
+         (stage-regex (build-stage-regex rules))
+         (msg "git-difme autocommit"))
+    (define (commit-staged)
+      (let ((msg (string-append msg " already staged file(s).")))
+       (difme-commit repo-path msg)))
+    (define (process file-info)
+      (let* ((type (car file-info))
+            (file-path (cdr file-info))
+            (msg (string-append msg " [" type "].")))
+        (if (string-match stage-regex type)
+            (difme-stage-commit repo-path file-path msg))))
+    ;; first commit already staged files.
+    (commit-staged)
+    (map process (difme-status repo-path))
+    (difme-push repo-path)))
 
 (define (walk-difme repos)
   "walk through each difme repo in REPOS and `difme` it."
