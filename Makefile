@@ -15,12 +15,15 @@ example_config=examples/config
 
 nothing:
 	@echo "Give me something to make. "
+
 .PHONY: nothing
 
 git-difme: $(git_difme)
+
 .PHONY: git-difme
 
 config: $(config_file)
+
 .PHONY: config
 
 $(git_difme): $(git_difme_src)
