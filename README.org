@@ -1,5 +1,7 @@
 * git-difme
 
+[[[https://git.ricketyspace.net/git-difme][repo]]]
+
 #+BEGIN_SRC bash
 git clone git://git.ricketyspace.net/git-difme.git
 #+END_SRC
