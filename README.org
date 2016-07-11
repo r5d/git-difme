@@ -28,7 +28,7 @@ before doing anything.
 
 the config file must be at =~/.config/git-difme/config=.
 
-the config is simply a scheme file that defines =difme-repos=
+the config is simply a scheme file that defines the =difme-repos=
 function:
 
 #+BEGIN_SRC scheme
