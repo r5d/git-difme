@@ -1,4 +1,4 @@
-#!/usr/bin/make
+#!/usr/bin/env make
 # license: gnu gpl version 3 or higher.
 # copyright 2016 rsiddharth <s@ricketyspace.net>
 
@@ -25,6 +25,21 @@ git-difme: $(git_difme)
 config: $(config_file)
 
 .PHONY: config
+
+docs:
+	@make -C docs html
+
+.PHONY: docs
+
+push-docs: docs
+	@rsync -avz --delete docs/_build/  $(DIFME_DOCS_HOST)
+
+.PHONY: push-docs
+
+docs-clean:
+	@make -C docs clean
+
+.PHONY: docs-clean
 
 $(git_difme): $(git_difme_src)
 	@mkdir -p $(bin)
