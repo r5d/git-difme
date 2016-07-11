@@ -7,8 +7,9 @@ git clone git://git.ricketyspace.net/git-difme.git
 stages files and makes commits on a list of git repositories based on
 some rules.
 
-** rules
+it always does a =git push= on each repo that it visits.
 
+** rules
 the rules specify what type of files to stage and commit.
 
 file types:
