@@ -38,13 +38,13 @@ function:
         '("/path/to/git/repo/frb" ".")))
 #+END_SRC
 
-- for repo ~foo~, git difm will stage and commit modified (M), deleted
+- for repo ~foo~, git-difm will stage and commit modified (M), deleted
   (D) and untracked (?) files.
-- for repo ~bar~, git difm will only stage and commit modified (M)
+- for repo ~bar~, git-difm will only stage and commit modified (M)
   files.
-- for repo ~baz~, git difm will only stage and commit modified (M) and
+- for repo ~baz~, git-difm will only stage and commit modified (M) and
   untracked (?) files.
-- for repo ~frb~, git difm will stage and commit all files.
+- for repo ~frb~, git-difm will stage and commit all files.
 
 ** installing
 *** the script
