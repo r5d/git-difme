@@ -1,4 +1,4 @@
-* git difme
+* git-difme
 
 #+BEGIN_SRC bash
 git clone git://git.ricketyspace.net/git-difme.git
