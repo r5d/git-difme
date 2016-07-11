@@ -44,7 +44,9 @@ docs-clean:
 $(git_difme): $(git_difme_src)
 	@mkdir -p $(bin)
 	@touch $@
-	@echo "#!"$(guile)" \\ \n-e main -s\n!#" > $@
+	@echo "#!"$(guile)" \\" > $@
+	@echo "-e main -s" >> $@
+	@echo "!#" >> $@
 	@cat $< >> $@
 	@chmod +x $@
 
