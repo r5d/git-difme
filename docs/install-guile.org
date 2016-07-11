@@ -1,3 +1,5 @@
+[[../][git-difme]]
+
 * install guile
 
 on gnu guix, do:
