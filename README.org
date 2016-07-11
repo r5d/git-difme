@@ -25,7 +25,6 @@ if git-difme finds finds already staged files, it'll commit them first
 before doing anything.
 
 ** config
-
 the config file must be at =~/.config/git-difme/config=.
 
 the config is simply a scheme file that defines the =difme-repos=
@@ -48,7 +47,6 @@ function:
 - for repo ~frb~, git difm will stage and commit all files.
 
 ** installing
-
 *** the script
 
 #+BEGIN_SRC bash
@@ -86,5 +84,4 @@ make config
 that will install a sample config file at =~/.config/git-difme=.
 
 ** license
-
 gnu general public license version 3 or higher.
