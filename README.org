@@ -87,5 +87,13 @@ make config
 
 that will install a sample config file at =~/.config/git-difme=.
 
+** running
+
+#+BEGIN_SRC bash
+git-difme
+#+END_SRC
+
+will do it.
+
 ** license
 gnu general public license version 3 or higher.

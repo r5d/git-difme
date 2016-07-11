@@ -163,4 +163,4 @@ also does `git push` to the repo' default upstream remote."
 ;;;; main
 (define (main srcs)
   "zarking main."
-  srcs)
+  (walk-difme (get-difme-repos)))
