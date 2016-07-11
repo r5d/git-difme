@@ -2,10 +2,9 @@
 ;; license: gnu gpl version 3 or higher.
 ;; copyright 2016 rsiddharth <s@ricketyspace.net>
 
-(define-module (git-difme)
-  #:use-module (ice-9 popen)
-  #:use-module (ice-9 rdelim)
-  #:export (main))
+(use-modules (ice-9 popen)
+             (ice-9 rdelim)
+             (ice-9 regex))
 
 ;;;; utils
 
