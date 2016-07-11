@@ -49,6 +49,8 @@ function:
 ** installing
 *** the script
 
+=git-difme= is written in [[https://gnu.org/s/guile][guile]]. first [[https://ricketyspace.net/git-difme/install-guile][install guile]], then do:
+
 #+BEGIN_SRC bash
 make git-difme
 #+END_SRC

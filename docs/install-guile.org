@@ -1,0 +1,25 @@
+* install guile
+
+on gnu guix, do:
+
+#+BEGIN_SRC bash
+guix package -i guile
+#+END_SRC
+
+on debian based systems, do:
+
+#+BEGIN_SRC bash
+apt-get install guile
+#+END_SRC
+
+on arch based systems, do:
+
+#+BEGIN_SRC bash
+pacman -S guile
+#+END_SRC
+
+on os x, install [[http://brew.sh/][homebrew]], then do:
+
+#+BEGIN_SRC bash
+brew install guile
+#+END_SRC
