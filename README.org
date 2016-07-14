@@ -61,24 +61,6 @@ that will install the =git-difme= script at =~/.bin/git-difme=.
 
 add =~/.bin/= to =PATH=.
 
-On bash, add this:
-
-#+BEGIN_SRC bash
-PATH=~/.bin:$PATH
-export PATH
-#+END_SRC
-
-to =.bashrc=:
-
-On zsh, add this:
-
-#+BEGIN_SRC zsh
-typeset -U path
-path=(~/.bin $path)
-#+END_SRC
-
-to =.zshenv=.
-
 *** the config file
 
 #+BEGIN_SRC bash
