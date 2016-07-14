@@ -48,6 +48,7 @@ $(git_difme): $(git_difme_src)
 	@echo "-e main -s" >> $@
 	@echo "!#" >> $@
 	@cat $< >> $@
+	@sed -i '7i;; repo at git.ricketyspace.net/git-difme' $@
 	@chmod +x $@
 
 	@echo "Script at" $@
