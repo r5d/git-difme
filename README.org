@@ -1,5 +1,9 @@
 * git-difme
 
+#+BEGIN_QUOTE
+git, do it for me
+#+END_QUOTE
+
 [[[https://git.ricketyspace.net/git-difme][repo]]]
 
 #+BEGIN_SRC bash
