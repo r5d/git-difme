@@ -146,10 +146,10 @@ also does `git push` to the repo' default upstream remote."
       (let ((msg (string-append msg " already staged file(s).")))
        (difme-commit repo-path msg)))
     (define (process file-info)
-      (let* ((type (car file-info))
+      (let* ((mod-type (car file-info))
             (file-path (cdr file-info))
-            (msg (string-append msg " [" type "].")))
         (if (string-match stage-regex type)
+            (msg (string-append msg " [" mod-type "].")))
             (difme-stage-commit repo-path file-path msg))))
     ;; first commit already staged files.
     (commit-staged)
