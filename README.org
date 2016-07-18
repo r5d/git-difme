@@ -18,12 +18,14 @@ it always does a =git push= on each repo that it visits.
 ** rules
 the rules specify what type of files to stage and commit.
 
-file types:
+a rule can either be a regex that matches a file or a file mod type.
 
-   - modified file (M).
-   - deleted file (D).
-   - untracked file (?).
-   - all files (.).
+the following file mod types are recognized:
+
+   - =M= :: modified file.
+   - =D= :: deleted file.
+   - =?= :: untracked file.
+   - =.= :: all files.
 
 the rules are defined per git repository in the config file.
 
@@ -40,17 +42,21 @@ function:
 (define (difme-repos)
   (list '("/path/to/git/repo/foo" "M" "D" "?")
         '("/path/to/git/repo/bar" "M")
-        '("/path/to/git/repo/baz" "M" "?")
-        '("/path/to/git/repo/frb" ".")))
+        '("/path/to/git/repo/baz" ".")
+        '("/path/to/git/repo/frb" "\\.txt" "personal/log.org" "?")
+        '("/path/to/git/repo/dot" ".config/")))
 #+END_SRC
 
 - for repo ~foo~, git-difme will stage and commit modified (M), deleted
   (D) and untracked (?) files.
 - for repo ~bar~, git-difme will only stage and commit modified (M)
   files.
-- for repo ~baz~, git-difme will only stage and commit modified (M) and
-  untracked (?) files.
-- for repo ~frb~, git-difme will stage and commit all files.
+- for repo ~baz~, git-difme will stage and commit all files (.).
+- for repo ~frb~, git-difme will stage and commit all files that have
+  =.txt= extension, file(s) whose path matches =personal/log.org=, and
+  all untracked files (?).
+- for repo ~dot~, git-difme will stage and commit all files under the
+  =.config= directory.
 
 ** installing
 *** the script

@@ -126,13 +126,21 @@ the commit message will be in the following format:
       (difme-exec cmd))))
 
 ;;;; difme workers
-(define (build-stage-regex rules)
-  "build stage regex based on RULES."
-  (let ((regex "^"))
-    (cond ((null? rules) (string-append regex "$"))
-          ((member "." rules) ".")
-          (else (string-append
-                 regex "[" (string-concatenate rules) "]")))))
+(define (difme-stage-commit? file-info rules)
+  "return non-nil if file must be staged and commited; #f otherwise."
+  (let ((file-mod-type (car file-info))
+        (file-path (cdr file-info)))
+    (define (mod-type? rule)
+      (member rule '("M" "D" "?" ".")))
+    (define (process rule)
+      (if (equal? rule ".")
+          rule
+          (string-append "^[" rule "]")))
+    (define (match rule)
+      (if (mod-type? rule)
+          (if (string-match (process rule) file-mod-type) #t #f)
+          (if (string-match rule file-path) #t #f)))
+    (member #t (map match rules))))
 
 (define (difme repo-info)
   "stage and commit relevant files in repo defined REPO-INFO.
@@ -140,7 +148,6 @@ the commit message will be in the following format:
 also does `git push` to the repo' default upstream remote."
   (let* ((repo-path (car repo-info))
          (rules (cdr repo-info))
-         (stage-regex (build-stage-regex rules))
          (msg "git-difme autocommit"))
     (define (commit-staged)
       (let ((msg (string-append msg " already staged file(s).")))
@@ -148,8 +155,8 @@ also does `git push` to the repo' default upstream remote."
     (define (process file-info)
       (let* ((mod-type (car file-info))
             (file-path (cdr file-info))
-        (if (string-match stage-regex type)
             (msg (string-append msg " [" mod-type "].")))
+        (if (difme-stage-commit? file-info rules)
             (difme-stage-commit repo-path file-path msg))))
     ;; first commit already staged files.
     (commit-staged)
