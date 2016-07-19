@@ -53,10 +53,10 @@ function:
   files.
 - for repo ~baz~, git-difme will stage and commit all files (.).
 - for repo ~frb~, git-difme will stage and commit all files that have
-  =.txt= extension, file(s) whose path matches =personal/log.org=, and
+  '=.txt=' extension, file(s) whose path matches '=personal/log.org=', and
   all untracked files (?).
 - for repo ~dot~, git-difme will stage and commit all files under the
-  =.config= directory.
+  '=.config=' directory.
 
 ** installing
 *** the script
