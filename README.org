@@ -29,7 +29,7 @@ the following file mod types are recognized:
 
 the rules are defined per git repository in the config file.
 
-if git-difme finds finds already staged files, it'll commit them first
+if git-difme finds already staged files, it'll commit them first
 before doing anything.
 
 ** config
