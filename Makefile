@@ -32,7 +32,7 @@ docs:
 .PHONY: docs
 
 push-docs: docs
-	@rsync -avz --delete docs/_build/  $(DIFME_DOCS_HOST)
+	@rsync -avz --exclude=releases --delete docs/_build/  $(DIFME_DOCS_HOST)
 
 .PHONY: push-docs
 
