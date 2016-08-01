@@ -4,7 +4,7 @@
 git, do it for me
 #+END_QUOTE
 
-[[[https://git.ricketyspace.net/git-difme][repo]]]
+[[[https://git.ricketyspace.net/git-difme][repo]]] [[[https://ricketyspace.net/git-difme/releases][releases]]]
 
 #+BEGIN_SRC bash
 git clone git://git.ricketyspace.net/git-difme.git
