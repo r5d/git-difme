@@ -88,7 +88,7 @@ returned."
 
 (define (difme-stage repo file)
 "stage FILE in REPO."
-  (let ((cmd (string-append "git add " file)))
+(let ((cmd (string-append "git add " (format #f "'~a'" file))))
     (with-directory-excursion repo
       (difme-exec cmd))))
 
