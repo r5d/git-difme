@@ -4,7 +4,7 @@
 
 guile:=`which guile 2>/dev/null || which guile2 2>/dev/null`
 
-bin=$(HOME)/.bin
+bin=/usr/local/bin
 
 git_difme=$(bin)/git-difme
 git_difme_src=git-difme.scm
