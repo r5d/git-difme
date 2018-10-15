@@ -43,13 +43,12 @@ docs-clean:
 
 $(git_difme): $(git_difme_src)
 	@mkdir -p $(bin)
-	@touch $@
-	@echo "#!"$(guile)" \\" > $@
-	@echo "-e main -s" >> $@
-	@echo "!#" >> $@
-	@cat $< >> $@
-	@sed -i '7i;; repo at git.ricketyspace.net/git-difme' $@
-	@chmod +x $@
+	@touch $(git_difme)
+	@echo "#!"$(guile)" \\" > $(git_difme)
+	@echo "-e main -s" >> $(git_difme)
+	@echo "!#" >> $(git_difme)
+	@cat $(git_difme_src) >> $(git_difme)
+	@chmod +x $(git_difme)
 
 	@echo "Script at" $@
 	@echo "Add" $(bin) "to PATH"
