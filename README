@@ -1,0 +1,88 @@
+# git-difme
+
+\[[repo][]\] \[[releases][]\]
+
+[repo]: https://git.ricketyspace.net/git-difme
+[releases]: https://ricketyspace.net/git-difme/releases
+
+```
+git clone git://git.ricketyspace.net/git-difme.git
+```
+
+Stages files and makes commits on a list of git repositories based on
+some rules.
+
+It always does a `git push` on each repo that it visits.
+
+## rules
+
+The rules specify what type of files to stage and commit.
+
+A rule can either be a regex that matches a file or a file mod type.
+
+The following file mod types are recognized:
+
+- `M`: modified file.
+- `D`: deleted file.
+- `?`: untracked file.
+- `.`: all files.
+
+The rules are defined per git repository in the config file.
+
+If git-difme finds already staged files, it'll commit them first
+before doing anything.
+
+## config
+
+The config file must be at `~/.config/git-difme/config`.
+
+The config is simply a scheme file that defines the `difme-repos`
+function:
+
+    (define (difme-repos)
+      (list '("/path/to/git/repo/foo" "M" "D" "?")
+            '("/path/to/git/repo/bar" "M")
+            '("/path/to/git/repo/baz" ".")
+            '("/path/to/git/repo/frb" "\\.txt" "personal/log.org" "?")
+            '("/path/to/git/repo/dot" ".config/")))
+
+- For repo `foo`, git-difme will stage and commit modified (M),
+  deleted (D) and untracked (?) files.
+- For repo `bar`, git-difme will only stage and commit modified (M)
+  files.
+- For repo `baz`, git-difme will stage and commit all files (.).
+- For repo `frb`, git-difme will stage and commit all files that have
+  '`.txt`' extension, file(s) whose path matches '`personal/log.org`',
+  and all untracked files (?).
+- For repo `dot`, git-difme will stage and commit all files under the
+  '`.config`' directory.
+
+## installing
+
+### the script
+
+`git-difme` is written [guile][]. First [install guile][i], then do:
+
+    # make git-difme
+
+That will install the `git-difme` script git-difme at
+`/usr/local/bin`.
+
+[guile]: https://gnu.org/s/guile
+[i]: https://ricketyspace.net/git-difme/install-guile
+
+### the config file
+
+    $ make config
+
+That will install a sample config file at `~/.config/git-difme`.
+
+## running
+
+    $ git-difme
+
+will do it.
+
+## license
+
+GNU GPL version 3 or higher.
