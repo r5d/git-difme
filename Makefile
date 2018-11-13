@@ -2,7 +2,8 @@
 # license: gnu gpl version 3 or higher.
 # copyright 2016 rsiddharth <s@ricketyspace.net>
 
-guile:=`which guile 2>/dev/null || which guile2 2>/dev/null`
+guile:=`which guile 2>/dev/null || which guile2 2>/dev/null \
+		|| which guile2.2 2>/dev/null`
 
 bin=/usr/local/bin
 
