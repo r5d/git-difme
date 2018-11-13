@@ -20,26 +20,21 @@ nothing:
 .PHONY: nothing
 
 git-difme: $(git_difme)
-
 .PHONY: git-difme
 
 config: $(config_file)
-
 .PHONY: config
 
 docs:
 	@make -C docs html
-
 .PHONY: docs
 
 push-docs: docs
 	@rsync -avz --exclude=releases --delete docs/_build/  $(DIFME_DOCS_HOST)
-
 .PHONY: push-docs
 
 docs-clean:
 	@make -C docs clean
-
 .PHONY: docs-clean
 
 $(git_difme): $(git_difme_src)
