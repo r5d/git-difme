@@ -19,7 +19,6 @@ nothing:
 	@echo "Give me something to make. "
 
 html: $(index_out) $(install_guile_out)
-
 .PHONY: html
 
 $(build_dir):
@@ -41,5 +40,4 @@ $(install_guile_out): $(install_guile_src) $(header) $(footer) \
 
 clean: $(build_dir)
 	@rm -rf $<
-
 .PHONY: clean
