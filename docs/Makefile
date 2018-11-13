@@ -1,6 +1,6 @@
 #!/usr/bin/env make
-# license: gnu gpl version 3 or higher.
-# copyright 2016 rsiddharth <s@ricketyspace.net>
+#
+# License: CC0-1.0
 
 build_dir=_build
 
