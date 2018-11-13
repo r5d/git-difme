@@ -1,6 +1,6 @@
 #!/usr/bin/env make
-# license: gnu gpl version 3 or higher.
-# copyright 2016 rsiddharth <s@ricketyspace.net>
+#
+# License: CC0-1.0
 
 guile:=`which guile 2>/dev/null || which guile2 2>/dev/null \
 		|| which guile2.2 2>/dev/null`
