@@ -3,7 +3,7 @@
 # License: CC0-1.0
 
 guile:=`which guile 2>/dev/null || which guile2 2>/dev/null \
-		|| which guile2.2 2>/dev/null`
+		|| which guile2.2 2>/dev/null || which guile3.0 2>/dev/null`
 
 bin=/usr/local/bin
 
